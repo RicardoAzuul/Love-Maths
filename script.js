@@ -11,14 +11,28 @@ document.addEventListener('DOMContentLoaded', function() {
       }
       else {
         let gameType = this.getAttribute('data-type');
-        alert(`You clicked ${gameType}`);
+        runGame(gameType);
       }
     })
   }
+
+  runGame('addition');
 })
 
-function runGame() {
+function runGame(gameType) {
+  // Generate two random numbers between 1 and 25
+  // Math.floor rounds down to the whole number
+  // Math.random generates a number between 0 and 1
+  let randomNumber1 = Math.floor(Math.random() * 25) + 1;
+  let randomNumber2 = Math.floor(Math.random() * 25) + 1;
 
+  if (gameType === 'addition') {
+    displayAdditionQuestion(randomNumber1, randomNumber2);
+  }
+  else {
+    alert(`Unknown game type ${gameType}`);
+    throw `Unknown game type ${gameType}, aborting!`;
+  }
 }
 
 function checkAnswer() {

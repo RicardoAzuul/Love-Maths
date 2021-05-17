@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
 })
 
 function runGame(gameType) {
+
   // Generate two random numbers between 1 and 25
   // Math.floor rounds down to the whole number
   // Math.random generates a number between 0 and 1
@@ -40,7 +41,21 @@ function checkAnswer() {
 }
 
 function calculateCorrectAnswer() {
+  // Gets the operands (the random numbers) and
+  // the operator (plus, minus etc) directly from the
+  // DOM
 
+  let operand1 = parseInt(document.getElementById("operand1").innerText);
+  let operand2 = parseInt(document.getElementById("operand2").innerText);
+  let operator = document.getElementById('operator').innerText;
+
+  if (operator === '+') {
+    return [operand1 + operand2, 'addition];
+  }
+  else {
+    alert(`Unimplemented operator ${operator}`);
+    throw `Unimplemented operator ${operator}, aborting!`;
+  }
 }
 
 function incrementScore() {
